@@ -5,12 +5,7 @@ import pickle
 
 app = Flask(__name__)  
 
-import os
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port) 
-    
 #load database============
 sym_des = pd.read_csv("dataset/symtoms_df.csv")
 precautions = pd.read_csv("dataset/precautions_df.csv")
@@ -77,9 +72,10 @@ def predict():
         
         my_pre=[]
         for i in pre[0]:
+            my_pre.append(i)
 
 
-          return render_template('index.html',
+            return render_template('index.html',
                                predicted_disease=predicted_disease,
                                dis_des=desc,
                                dis_pre=my_pre,
